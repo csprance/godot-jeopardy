@@ -1,0 +1,133 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjgvyw4vorvmn"]
+
+[ext_resource type="Script" uid="uid://t5dn1w7f27r4" path="res://scripts/ui/GameBoardController.gd" id="1_gameboard"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_title"]
+font_size = 36
+font_color = Color(1, 1, 0.8, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_timer"]
+font_size = 32
+font_color = Color(1, 0.8, 0.8, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_subtitle"]
+font_size = 20
+font_color = Color(0.9, 0.9, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_status"]
+font_color = Color(0.8, 0.8, 0.9, 1)
+
+[node name="GameBoard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gameboard")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.05, 0.15, 1)
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopBar" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="GameTitle" type="Label" parent="MainContainer/TopBar"]
+layout_mode = 2
+text = "JEOPARDY!"
+label_settings = SubResource("LabelSettings_title")
+
+[node name="Spacer" type="Control" parent="MainContainer/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Timer" type="Label" parent="MainContainer/TopBar"]
+layout_mode = 2
+text = "30"
+label_settings = SubResource("LabelSettings_timer")
+
+[node name="HSeparator" type="HSeparator" parent="MainContainer"]
+layout_mode = 2
+
+[node name="GameArea" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BoardContainer" type="VBoxContainer" parent="MainContainer/GameArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CategoriesContainer" type="HBoxContainer" parent="MainContainer/GameArea/BoardContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="QuestionsGrid" type="GridContainer" parent="MainContainer/GameArea/BoardContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 6
+
+[node name="VSeparator" type="VSeparator" parent="MainContainer/GameArea"]
+layout_mode = 2
+
+[node name="SidePanel" type="VBoxContainer" parent="MainContainer/GameArea"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="PlayersTitle" type="Label" parent="MainContainer/GameArea/SidePanel"]
+layout_mode = 2
+text = "Players"
+label_settings = SubResource("LabelSettings_subtitle")
+
+[node name="PlayersList" type="VBoxContainer" parent="MainContainer/GameArea/SidePanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HSeparator2" type="HSeparator" parent="MainContainer/GameArea/SidePanel"]
+layout_mode = 2
+
+[node name="BuzzerButton" type="Button" parent="MainContainer/GameArea/SidePanel"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+disabled = true
+text = "BUZZ!"
+
+[node name="HSeparator3" type="HSeparator" parent="MainContainer"]
+layout_mode = 2
+
+[node name="StatusBar" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="StatusLabel" type="Label" parent="MainContainer/StatusBar"]
+layout_mode = 2
+text = "Loading game..."
+label_settings = SubResource("LabelSettings_status")
+
+[node name="Spacer2" type="Control" parent="MainContainer/StatusBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CurrentPlayer" type="Label" parent="MainContainer/StatusBar"]
+layout_mode = 2
+text = "Current Player: Nobody"
+label_settings = SubResource("LabelSettings_status")

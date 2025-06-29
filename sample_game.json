@@ -1,0 +1,298 @@
+{
+  "title": "Classic Trivia Challenge - Question Pool",
+  "description": "A diverse pool of trivia questions that randomly generates different game boards each time",
+  "questions": [
+    {
+      "category": "WORLD CAPITALS",
+      "question": "This city is the capital of France and home to the Eiffel Tower.",
+      "answer": "What is Paris?",
+      "point_range": {"min": 100, "max": 300},
+      "tags": ["geography", "europe"]
+    },
+    {
+      "category": "WORLD CAPITALS", 
+      "question": "The capital of Japan, this city hosted the 2020 Summer Olympics.",
+      "answer": "What is Tokyo?",
+      "point_range": {"min": 200, "max": 400}
+    },
+    {
+      "category": "WORLD CAPITALS",
+      "question": "This Australian capital was specially designed and built to be the seat of government.",
+      "answer": "What is Canberra?",
+      "point_range": {"min": 400, "max": 700}
+    },
+    {
+      "category": "WORLD CAPITALS",
+      "question": "This South American capital sits at over 11,000 feet above sea level.",
+      "answer": "What is La Paz?",
+      "point_range": {"min": 600, "max": 900}
+    },
+    {
+      "category": "WORLD CAPITALS",
+      "question": "The capital of this landlocked African country shares its name with the country itself.",
+      "answer": "What is Djibouti?",
+      "point_range": {"min": 800, "max": 1200}
+    },
+    {
+      "category": "WORLD CAPITALS",
+      "question": "This European capital was once divided by a famous wall.",
+      "answer": "What is Berlin?",
+      "point_range": {"min": 300, "max": 500}
+    },
+    {
+      "category": "WORLD CAPITALS",
+      "question": "The world's highest capital city, this South American city sits at 12,000 feet.",
+      "answer": "What is La Rinconada?",
+      "point_range": {"min": 700, "max": 1000}
+    },
+
+    {
+      "category": "MOVIE QUOTES",
+      "question": "\"May the Force be with you\" is from this space opera franchise.",
+      "answer": "What is Star Wars?",
+      "point_range": {"min": 100, "max": 300},
+      "difficulty": "easy"
+    },
+    {
+      "category": "MOVIE QUOTES",
+      "question": "\"Here's looking at you, kid\" was famously said in this 1942 classic.",
+      "answer": "What is Casablanca?",
+      "point_range": {"min": 400, "max": 600}
+    },
+    {
+      "category": "MOVIE QUOTES",
+      "question": "\"I'll be back\" was Arnold Schwarzenegger's catchphrase in this 1984 sci-fi film.",
+      "answer": "What is The Terminator?",
+      "point_range": {"min": 300, "max": 500}
+    },
+    {
+      "category": "MOVIE QUOTES",
+      "question": "\"Nobody puts Baby in a corner\" comes from this 1987 dance romance.",
+      "answer": "What is Dirty Dancing?",
+      "point_range": {"min": 500, "max": 800}
+    },
+    {
+      "category": "MOVIE QUOTES",
+      "question": "\"Frankly, my dear, I don't give a damn\" concludes this 1939 Civil War epic.",
+      "answer": "What is Gone with the Wind?",
+      "point_range": {"min": 600, "max": 1000}
+    },
+    {
+      "category": "MOVIE QUOTES",
+      "question": "\"You can't handle the truth!\" was shouted by Jack Nicholson in this military courtroom drama.",
+      "answer": "What is A Few Good Men?",
+      "point_range": {"min": 400, "max": 700}
+    },
+
+    {
+      "category": "SCIENCE & NATURE",
+      "question": "This gas makes up about 78% of Earth's atmosphere.",
+      "answer": "What is nitrogen?",
+      "point_range": {"min": 200, "max": 400}
+    },
+    {
+      "category": "SCIENCE & NATURE",
+      "question": "The hardest natural substance on Earth, it's formed from carbon under extreme pressure.",
+      "answer": "What is diamond?",
+      "point_range": {"min": 300, "max": 500}
+    },
+    {
+      "category": "SCIENCE & NATURE",
+      "question": "This scientist developed the theory of evolution by natural selection.",
+      "answer": "Who is Charles Darwin?",
+      "point_range": {"min": 300, "max": 600}
+    },
+    {
+      "category": "SCIENCE & NATURE",
+      "question": "The study of earthquakes is known by this term.",
+      "answer": "What is seismology?",
+      "point_range": {"min": 600, "max": 900}
+    },
+    {
+      "category": "SCIENCE & NATURE",
+      "question": "This element has the chemical symbol 'Au' and atomic number 79.",
+      "answer": "What is gold?",
+      "point_range": {"min": 400, "max": 700}
+    },
+    {
+      "category": "SCIENCE & NATURE",
+      "question": "The powerhouse of the cell, this organelle produces ATP.",
+      "answer": "What is the mitochondria?",
+      "point_range": {"min": 500, "max": 800}
+    },
+
+    {
+      "category": "SPORTS",
+      "question": "This sport is known as 'the beautiful game' and is played with feet.",
+      "answer": "What is soccer (or football)?",
+      "point_range": {"min": 100, "max": 300},
+      "difficulty": "easy"
+    },
+    {
+      "category": "SPORTS",
+      "question": "Michael Jordan famously wore this jersey number during most of his NBA career.",
+      "answer": "What is 23?",
+      "point_range": {"min": 200, "max": 400}
+    },
+    {
+      "category": "SPORTS",
+      "question": "This tennis tournament is played on grass courts in England each summer.",
+      "answer": "What is Wimbledon?",
+      "point_range": {"min": 400, "max": 600}
+    },
+    {
+      "category": "SPORTS",
+      "question": "The maximum score possible in ten-pin bowling.",
+      "answer": "What is 300?",
+      "point_range": {"min": 500, "max": 800}
+    },
+    {
+      "category": "SPORTS",
+      "question": "This country has won the most FIFA World Cup tournaments.",
+      "answer": "What is Brazil?",
+      "point_range": {"min": 600, "max": 900}
+    },
+    {
+      "category": "SPORTS",
+      "question": "In golf, this term describes scoring one stroke under par.",
+      "answer": "What is a birdie?",
+      "point_range": {"min": 300, "max": 500}
+    },
+
+    {
+      "category": "FOOD & DRINK",
+      "question": "This Italian dish consists of flat pasta sheets layered with sauce and cheese.",
+      "answer": "What is lasagna?",
+      "point_range": {"min": 200, "max": 400}
+    },
+    {
+      "category": "FOOD & DRINK",
+      "question": "This spice, derived from crocus flowers, is one of the world's most expensive.",
+      "answer": "What is saffron?",
+      "point_range": {"min": 500, "max": 800}
+    },
+    {
+      "category": "FOOD & DRINK",
+      "question": "This Japanese dish features raw fish served over seasoned rice.",
+      "answer": "What is sushi?",
+      "point_range": {"min": 300, "max": 500}
+    },
+    {
+      "category": "FOOD & DRINK",
+      "question": "The process of browning sugar to create a sweet, nutty flavor.",
+      "answer": "What is caramelization?",
+      "point_range": {"min": 600, "max": 900}
+    },
+    {
+      "category": "FOOD & DRINK",
+      "question": "This French cooking technique involves cooking food slowly in its own fat.",
+      "answer": "What is confit?",
+      "point_range": {"min": 700, "max": 1000}
+    },
+    {
+      "category": "FOOD & DRINK",
+      "question": "This fermented Korean dish is made primarily from cabbage and chili peppers.",
+      "answer": "What is kimchi?",
+      "point_range": {"min": 400, "max": 600}
+    },
+
+    {
+      "category": "TECHNOLOGY",
+      "question": "This company created the iPhone and is known for its bitten apple logo.",
+      "answer": "What is Apple?",
+      "point_range": {"min": 100, "max": 300},
+      "difficulty": "easy"
+    },
+    {
+      "category": "TECHNOLOGY", 
+      "question": "HTML stands for HyperText this Language.",
+      "answer": "What is Markup?",
+      "point_range": {"min": 300, "max": 500}
+    },
+    {
+      "category": "TECHNOLOGY",
+      "question": "This programming language was created by Guido van Rossum and named after a comedy troupe.",
+      "answer": "What is Python?",
+      "point_range": {"min": 400, "max": 700}
+    },
+    {
+      "category": "TECHNOLOGY",
+      "question": "The 'www' in website addresses stands for World Wide this.",
+      "answer": "What is Web?",
+      "point_range": {"min": 200, "max": 400}
+    },
+    {
+      "category": "TECHNOLOGY",
+      "question": "This computer science pioneer is often called the first computer programmer.",
+      "answer": "Who is Ada Lovelace?",
+      "point_range": {"min": 600, "max": 1000}
+    },
+    {
+      "category": "TECHNOLOGY",
+      "question": "This social media platform was originally called 'The Facebook'.",
+      "answer": "What is Facebook?",
+      "point_range": {"min": 300, "max": 500}
+    },
+
+    {
+      "category": "HISTORY",
+      "question": "This ship sank on its maiden voyage in 1912 after hitting an iceberg.",
+      "answer": "What is the Titanic?",
+      "point_range": {"min": 200, "max": 400}
+    },
+    {
+      "category": "HISTORY",
+      "question": "This wall in Germany was torn down in 1989, symbolizing the end of the Cold War.",
+      "answer": "What is the Berlin Wall?",
+      "point_range": {"min": 300, "max": 500}
+    },
+    {
+      "category": "HISTORY",
+      "question": "This Egyptian queen was the last pharaoh of Egypt and had relationships with Julius Caesar and Mark Antony.",
+      "answer": "Who is Cleopatra?",
+      "point_range": {"min": 400, "max": 600}
+    },
+    {
+      "category": "HISTORY",
+      "question": "This 1969 event saw humans first set foot on the moon.",
+      "answer": "What is Apollo 11?",
+      "point_range": {"min": 400, "max": 700}
+    },
+
+    {
+      "category": "LITERATURE",
+      "question": "This Shakespeare play features the characters Romeo and Juliet.",
+      "answer": "What is Romeo and Juliet?",
+      "point_range": {"min": 200, "max": 400}
+    },
+    {
+      "category": "LITERATURE",
+      "question": "This British author wrote the Harry Potter series.",
+      "answer": "Who is J.K. Rowling?",
+      "point_range": {"min": 200, "max": 400}
+    },
+    {
+      "category": "LITERATURE",
+      "question": "This novel by Harper Lee deals with racial injustice in the American South.",
+      "answer": "What is To Kill a Mockingbird?",
+      "point_range": {"min": 400, "max": 600}
+    },
+    {
+      "category": "LITERATURE",
+      "question": "This dystopian novel by George Orwell introduced the concept of 'Big Brother'.",
+      "answer": "What is 1984?",
+      "point_range": {"min": 500, "max": 800}
+    }
+  ],
+  "board_config": {
+    "categories_count": 6,
+    "questions_per_category": 5,
+    "point_values": [200, 400, 600, 800, 1000],
+    "daily_doubles_count": 2
+  },
+  "final_jeopardy": {
+    "category": "AMERICAN HISTORY",
+    "question": "This 1803 land acquisition from France doubled the size of the United States.",
+    "answer": "What is the Louisiana Purchase?"
+  }
+}

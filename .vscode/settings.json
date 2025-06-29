@@ -1,0 +1,11 @@
+{
+    "godot_tools.editor_path": "godot",
+    "godot_tools.gdscript_lsp_server_port": 6005,
+    "godot_tools.scene_file_config": "${workspaceFolder}/scenes/main/Main.tscn",
+    "godot_tools.project_file": "${workspaceFolder}/project.godot",
+    "[gdscript]": {
+        "editor.insertSpaces": false,
+        "editor.detectIndentation": false,
+        "editor.tabSize": 4
+    }
+}

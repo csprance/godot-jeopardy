@@ -1,0 +1,151 @@
+[gd_scene load_steps=8 format=3 uid="uid://c4lc5akli03le"]
+
+[ext_resource type="Script" uid="uid://id2n814b0yj3" path="res://scripts/ui/QuestionDisplayController.gd" id="1_question"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_category"]
+font_size = 24
+font_color = Color(1, 1, 0.8, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_points"]
+font_size = 28
+font_color = Color(0.8, 1, 0.8, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dd"]
+font_size = 20
+font_color = Color(1, 0.8, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_question"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_answer"]
+font_size = 24
+font_color = Color(0.8, 1, 0.8, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_status"]
+font_color = Color(0.9, 0.9, 1, 1)
+
+[node name="QuestionDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_question")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.8)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="QuestionPanel" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(800, 600)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/QuestionPanel"]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="CenterContainer/QuestionPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Category" type="Label" parent="CenterContainer/QuestionPanel/VBoxContainer/Header"]
+layout_mode = 2
+text = "CATEGORY"
+label_settings = SubResource("LabelSettings_category")
+
+[node name="Spacer" type="Control" parent="CenterContainer/QuestionPanel/VBoxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Points" type="Label" parent="CenterContainer/QuestionPanel/VBoxContainer/Header"]
+layout_mode = 2
+text = "$400"
+label_settings = SubResource("LabelSettings_points")
+
+[node name="DailyDouble" type="Label" parent="CenterContainer/QuestionPanel/VBoxContainer/Header"]
+visible = false
+layout_mode = 2
+text = "DAILY DOUBLE!"
+label_settings = SubResource("LabelSettings_dd")
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/QuestionPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="QuestionContainer" type="CenterContainer" parent="CenterContainer/QuestionPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="QuestionText" type="Label" parent="CenterContainer/QuestionPanel/VBoxContainer/QuestionContainer"]
+layout_mode = 2
+text = "This is the question text that will be displayed to players during the game."
+label_settings = SubResource("LabelSettings_question")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HSeparator2" type="HSeparator" parent="CenterContainer/QuestionPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="AnswerContainer" type="VBoxContainer" parent="CenterContainer/QuestionPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="AnswerInput" type="LineEdit" parent="CenterContainer/QuestionPanel/VBoxContainer/AnswerContainer"]
+visible = false
+layout_mode = 2
+placeholder_text = "Enter your answer here..."
+
+[node name="AnswerText" type="Label" parent="CenterContainer/QuestionPanel/VBoxContainer/AnswerContainer"]
+visible = false
+layout_mode = 2
+text = "What is the answer?"
+label_settings = SubResource("LabelSettings_answer")
+horizontal_alignment = 1
+
+[node name="ButtonContainer" type="HBoxContainer" parent="CenterContainer/QuestionPanel/VBoxContainer/AnswerContainer"]
+layout_mode = 2
+
+[node name="SubmitButton" type="Button" parent="CenterContainer/QuestionPanel/VBoxContainer/AnswerContainer/ButtonContainer"]
+visible = false
+layout_mode = 2
+text = "Submit Answer"
+
+[node name="CorrectButton" type="Button" parent="CenterContainer/QuestionPanel/VBoxContainer/AnswerContainer/ButtonContainer"]
+visible = false
+layout_mode = 2
+text = "Correct"
+
+[node name="WrongButton" type="Button" parent="CenterContainer/QuestionPanel/VBoxContainer/AnswerContainer/ButtonContainer"]
+visible = false
+layout_mode = 2
+text = "Wrong"
+
+[node name="HSeparator3" type="HSeparator" parent="CenterContainer/QuestionPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="StatusContainer" type="HBoxContainer" parent="CenterContainer/QuestionPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="StatusLabel" type="Label" parent="CenterContainer/QuestionPanel/VBoxContainer/StatusContainer"]
+layout_mode = 2
+text = "Waiting for buzz..."
+label_settings = SubResource("LabelSettings_status")
+
+[node name="Spacer2" type="Control" parent="CenterContainer/QuestionPanel/VBoxContainer/StatusContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CloseButton" type="Button" parent="CenterContainer/QuestionPanel/VBoxContainer/StatusContainer"]
+layout_mode = 2
+text = "Close"

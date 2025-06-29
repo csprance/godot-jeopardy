@@ -1,0 +1,136 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Jeopardy Game Data Schema - Question Pool Format",
+  "type": "object",
+  "required": ["title", "questions"],
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "The name of this Jeopardy game"
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional description of the game theme"
+    },
+    "questions": {
+      "type": "array",
+      "description": "Pool of questions to randomly select from for board generation",
+      "minItems": 30,
+      "items": {
+        "type": "object",
+        "required": ["category", "question", "answer", "point_range"],
+        "properties": {
+          "category": {
+            "type": "string",
+            "description": "Category this question belongs to"
+          },
+          "question": {
+            "type": "string",
+            "description": "The clue/question text presented to players"
+          },
+          "answer": {
+            "type": "string",
+            "description": "The correct answer (should be in question format for authenticity)"
+          },
+          "point_range": {
+            "type": "object",
+            "description": "Point value range for this question difficulty",
+            "required": ["min", "max"],
+            "properties": {
+              "min": {
+                "type": "integer",
+                "description": "Minimum point value",
+                "minimum": 100
+              },
+              "max": {
+                "type": "integer",
+                "description": "Maximum point value",
+                "minimum": 100
+              }
+            }
+          },
+          "daily_double": {
+            "type": "boolean",
+            "description": "Optional: marks this as a potential Daily Double question",
+            "default": false
+          },
+          "tags": {
+            "type": "array",
+            "description": "Optional tags for additional filtering/grouping",
+            "items": {
+              "type": "string"
+            }
+          },
+          "media": {
+            "type": "object",
+            "description": "Optional media attachments",
+            "properties": {
+              "image": {
+                "type": "string",
+                "description": "Path to image file"
+              },
+              "audio": {
+                "type": "string", 
+                "description": "Path to audio file"
+              }
+            }
+          }
+        }
+      }
+    },
+    "board_config": {
+      "type": "object",
+      "description": "Optional configuration for board generation",
+      "properties": {
+        "categories_count": {
+          "type": "integer",
+          "description": "Number of categories on board (default: 6)",
+          "minimum": 3,
+          "maximum": 8,
+          "default": 6
+        },
+        "questions_per_category": {
+          "type": "integer",
+          "description": "Questions per category (default: 5)",
+          "minimum": 3,
+          "maximum": 7,
+          "default": 5
+        },
+        "point_values": {
+          "type": "array",
+          "description": "Point values for each row (default: [200,400,600,800,1000])",
+          "items": {
+            "type": "integer",
+            "minimum": 100
+          }
+        },
+        "daily_doubles_count": {
+          "type": "integer",
+          "description": "Number of Daily Double questions to place (default: 2)",
+          "minimum": 0,
+          "maximum": 5,
+          "default": 2
+        }
+      }
+    },
+    "final_jeopardy": {
+      "type": "object",
+      "description": "Optional Final Jeopardy question",
+      "properties": {
+        "category": {
+          "type": "string",
+          "description": "Final Jeopardy category"
+        },
+        "question": {
+          "type": "string",
+          "description": "Final Jeopardy clue"
+        },
+        "answer": {
+          "type": "string",
+          "description": "Final Jeopardy answer"
+        }
+      },
+      "required": ["category", "question", "answer"]
+    }
+  }
+}

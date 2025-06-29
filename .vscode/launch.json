@@ -1,0 +1,50 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Host Client",
+      "type": "godot",
+      "request": "launch",
+      "project": "${workspaceFolder}",
+      "port": 6007,
+      "address": "127.0.0.1",
+      "launch_game_instance": true,
+      "launch_scene": false
+    },
+    {
+      "name": "Launch Client",
+      "type": "godot",
+      "request": "launch",
+      "project": "${workspaceFolder}",
+      "port": 6008,
+      "address": "127.0.0.1",
+      "launch_game_instance": true,
+      "launch_scene": false
+    },
+    {
+      "name": "Attach to Host",
+      "type": "godot",
+      "request": "attach",
+      "address": "127.0.0.1",
+      "port": 6007
+    },
+    {
+      "name": "Attach to Client",
+      "type": "godot",
+      "request": "attach",
+      "address": "127.0.0.1",
+      "port": 6008
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Launch Three Clients (Host + Client + Client)",
+      "configurations": [
+        "Launch Host Client",
+        "Launch Client",
+        "Launch Client"
+      ],
+      "stopAll": true
+    }
+  ]
+}

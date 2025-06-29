@@ -1,0 +1,85 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Export Debug Build (Windows)",
+            "type": "shell",
+            "command": "godot",
+            "args": [
+                "--headless",
+                "--path",
+                "${workspaceFolder}",
+                "--export-debug",
+                "Windows Desktop",
+                "${workspaceFolder}/build/jeopardy-debug.exe"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Export Release Build (Windows)",
+            "type": "shell", 
+            "command": "godot",
+            "args": [
+                "--headless",
+                "--path",
+                "${workspaceFolder}",
+                "--export-release",
+                "Windows Desktop", 
+                "${workspaceFolder}/build/jeopardy-release.exe"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Import Assets",
+            "type": "shell",
+            "command": "godot",
+            "args": [
+                "--headless",
+                "--path",
+                "${workspaceFolder}",
+                "--import"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Check Scripts",
+            "type": "shell",
+            "command": "godot",
+            "args": [
+                "--headless",
+                "--path",
+                "${workspaceFolder}",
+                "--check-only"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        }
+    ]
+}
