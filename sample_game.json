@@ -258,6 +258,12 @@
       "answer": "What is Apollo 11?",
       "point_range": {"min": 400, "max": 700}
     },
+    {
+      "category": "HISTORY",
+      "question": "This ancient wonder of the world was located in Alexandria and contained countless scrolls.",
+      "answer": "What is the Library of Alexandria?",
+      "point_range": {"min": 600, "max": 900}
+    },
 
     {
       "category": "LITERATURE",
@@ -282,6 +288,12 @@
       "question": "This dystopian novel by George Orwell introduced the concept of 'Big Brother'.",
       "answer": "What is 1984?",
       "point_range": {"min": 500, "max": 800}
+    },
+    {
+      "category": "LITERATURE",
+      "question": "This epic poem by Homer tells the story of Odysseus's journey home after the Trojan War.",
+      "answer": "What is The Odyssey?",
+      "point_range": {"min": 600, "max": 900}
     }
   ],
   "board_config": {

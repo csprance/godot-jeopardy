@@ -131,6 +131,9 @@ func _generate_game_board():
 	# Set board in game state
 	GameState.set_game_board(board)
 	
+	# Send board data to all clients
+	NetworkManager.rpc("sync_board_data", board)
+	
 	# Debug print
 	BoardGenerator.print_board_summary(board)
 

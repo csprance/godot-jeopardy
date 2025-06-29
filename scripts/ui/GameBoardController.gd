@@ -40,6 +40,12 @@ func _initialize_managers():
 	
 	# Connect network signals (using autoloads)
 	NetworkManager.player_left.connect(_on_player_left)
+	NetworkManager.question_completed.connect(_on_question_completed_received)
+	
+	# Check if board data already exists (in case signal was emitted before we connected)
+	if not GameState.game_board.is_empty():
+		print("GameBoardController: Found existing board data with ", GameState.game_board.size(), " categories")
+		_on_board_updated(GameState.game_board)
 	
 	# Initialize display
 	_update_display()
@@ -157,28 +163,38 @@ func _create_question_button(question_data: Dictionary, category: String) -> Con
 		button.disabled = true
 		button.text = ""
 	else:
-		button.pressed.connect(_on_question_selected.bind(category, points))
+		button.pressed.connect(_on_question_button_clicked.bind(category, points))
 	
 	return button
 
 func _on_board_updated(board_data: Dictionary):
+	print("GameBoardController: Received board data with ", board_data.size(), " categories")
 	game_board = board_data
 	_create_game_board()
 	status_label.text = "Board loaded - Select a question!"
 
-func _on_question_selected(category: String, points: int):
-	# Only allow question selection when it's the right time
+func _on_question_button_clicked(category: String, points: int):
+	# Only allow question selection when it's the right time and player is host
 	if GameState.current_state != GameState.State.PLAYING:
 		return
 	
-	# Show question popup
+	if not NetworkManager.is_host:
+		status_label.text = "Only the host can select questions!"
+		return
+	
+	# Find and send question to all players
 	var question_data = _find_question(category, points)
+	if question_data:
+		NetworkManager.rpc("show_question_to_all", category, points, question_data)
+
+func _on_question_selected(category: String, points: int, question_data: Dictionary):
+	# This is called via RPC for all players
 	if question_data and question_popup:
-		question_popup.show_question(question_data)
-		_start_question_timer()
+		question_popup.show_question(question_data, category, points)
 		
-		# Enable buzzer
-		buzzer_button.disabled = false
+		# Timer is started by host via NetworkManager
+		# Keep the main buzzer disabled since popup has its own buzz button
+		buzzer_button.disabled = true
 		status_label.text = "Question active - BUZZ to answer!"
 
 func _find_question(category: String, points: int) -> Dictionary:
@@ -247,3 +263,15 @@ func update_player_list(new_players: Dictionary):
 func update_scores(scores: Dictionary):
 	players = scores
 	_update_players_list()
+
+func _on_question_completed_received(category: String, points: int):
+	# Mark the question as completed in our local board data
+	if game_board.has(category):
+		var questions = game_board[category]
+		for question in questions:
+			if question.get("points", 0) == points:
+				question["completed"] = true
+				break
+	
+	# Refresh the board UI to show the completed state
+	_create_game_board()

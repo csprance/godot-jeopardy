@@ -38,12 +38,8 @@
   ],
   "compounds": [
     {
-      "name": "Launch Three Clients (Host + Client + Client)",
-      "configurations": [
-        "Launch Host Client",
-        "Launch Client",
-        "Launch Client"
-      ],
+      "name": "Launch Two Clients (Host + Client)",
+      "configurations": ["Launch Host Client", "Launch Client"],
       "stopAll": true
     }
   ]

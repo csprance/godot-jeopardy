@@ -7,6 +7,9 @@ signal player_joined(player_name: String, player_id: int)
 signal player_left(player_id: int)
 signal game_started()
 signal connection_failed(error: String)
+signal answer_submitted(player_id: int, answer_text: String)
+signal answer_judgment(player_id: int, is_correct: bool, points: int)
+signal question_completed(category: String, points: int)
 
 var multiplayer_peer: MultiplayerPeer
 var is_host: bool = false
@@ -83,13 +86,57 @@ func receive_player_list(player_list: Dictionary):
 
 @rpc("authority", "call_local")
 func start_game():
+	GameState.change_state(GameState.State.PLAYING)
 	game_started.emit()
+
+@rpc("authority", "call_local")
+func sync_board_data(board_data: Dictionary):
+	# Clients receive the board data from host
+	GameState.set_game_board(board_data)
+
+@rpc("authority", "call_local")
+func show_question_to_all(category: String, points: int, question_data: Dictionary):
+	# Host sends question data to all players
+	GameState.question_selected.emit(category, points, question_data)
+	
+	# Only host activates the buzzer system
+	if is_host:
+		GameState.start_question_timer()
 
 @rpc("any_peer", "call_local")
 func player_buzzed(player_id: int, timestamp: float):
 	# Handle buzzer input - host determines winner
 	if is_host:
-		GameState.handle_buzz(player_id, timestamp)
+		# Check if this buzz is valid and process it
+		if GameState.buzzer_active and GameState.first_buzzer == -1:
+			GameState.first_buzzer = player_id
+			GameState.buzzer_timestamp = timestamp
+			GameState.buzzer_active = false
+			
+			# Send buzz result to all players
+			rpc("buzz_accepted", player_id, timestamp)
+
+@rpc("authority", "call_local")
+func buzz_accepted(player_id: int, timestamp: float):
+	# All players receive the buzz result
+	GameState.buzz_received.emit(player_id, timestamp)
+
+@rpc("any_peer", "call_local", "reliable")
+func submit_player_answer(player_id: int, answer_text: String):
+	# Player sends their answer to the host
+	if is_host:
+		# Emit signal to show answer to host's question display
+		answer_submitted.emit(player_id, answer_text)
+
+@rpc("authority", "call_local")
+func answer_judged(player_id: int, is_correct: bool, points: int):
+	# Host broadcasts the judgment to all players
+	answer_judgment.emit(player_id, is_correct, points)
+
+@rpc("authority", "call_local")
+func sync_question_completed(category: String, points: int):
+	# Host tells all players that a specific question has been completed
+	question_completed.emit(category, points)
 
 @rpc("authority", "call_local")
 func update_score(player_id: int, new_score: int):
