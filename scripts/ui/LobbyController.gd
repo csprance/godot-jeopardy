@@ -48,7 +48,7 @@ func _update_display():
 		game_title_label.text = "Game: No data loaded"
 	
 	# Update player count
-	player_count_label.text = "Players: " + str(players.size()) + "/8"
+	player_count_label.text = "Players: " + str(players.size()) + "/8 (min: 1)"
 	
 	# Update server IP
 	if NetworkManager.is_host:
@@ -58,8 +58,8 @@ func _update_display():
 	
 	# Update start button
 	if NetworkManager.is_host:
-		start_button.disabled = players.size() < 2
-		status_label.text = "Need at least 2 players to start" if players.size() < 2 else "Ready to start!"
+		start_button.disabled = players.size() < 1
+		status_label.text = "Need at least 1 player to start" if players.size() < 1 else "Ready to start!"
 	else:
 		status_label.text = "Waiting for host to start game..."
 	
@@ -104,8 +104,8 @@ func _on_start_pressed():
 	if not NetworkManager.is_host:
 		return
 	
-	if players.size() < 2:
-		status_label.text = "Need at least 2 players to start"
+	if players.size() < 1:
+		status_label.text = "Need at least 1 player to start"
 		status_label.modulate = Color.RED
 		return
 	
