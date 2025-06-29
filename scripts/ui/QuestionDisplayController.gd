@@ -24,7 +24,6 @@ var buzzer_player_id: int = -1
 
 func _ready():
 	# Managers are now autoloads - no need to get references
-	
 	# Connect button signals
 	submit_button.pressed.connect(_on_submit_pressed)
 	correct_button.pressed.connect(_on_correct_pressed)
@@ -61,9 +60,15 @@ func show_question(question_data: Dictionary, category: String = "", points: int
 	correct_button.visible = false
 	wrong_button.visible = false
 	
-	# Enable buzz button
-	buzz_button.disabled = false
-	buzz_button.visible = true
+	# Enable buzz button only for non-host players
+	if NetworkManager.is_host:
+		buzz_button.disabled = true
+		buzz_button.visible = false
+		buzz_button.text = "HOST"
+	else:
+		buzz_button.disabled = false
+		buzz_button.visible = true
+		buzz_button.text = "BUZZ!"
 	
 	status_label.text = "Waiting for buzz..."
 
@@ -140,8 +145,11 @@ func _handle_answer_result(is_correct: bool):
 	if not NetworkManager.is_host:
 		return
 	
-	# Calculate points
-	var points = current_question.get("points", 0)
+	# Calculate points (double for Daily Double)
+	var base_points = current_question.get("points", 0)
+	var points = base_points
+	if current_question.get("daily_double", false):
+		points = base_points * 2
 	
 	# Update score locally
 	if is_correct:
@@ -197,10 +205,12 @@ func _on_answer_received_by_host(player_id: int, answer_text: String):
 func _on_judgment_received(player_id: int, is_correct: bool, points: int):
 	# All players receive the judgment result
 	var player_name = _get_player_name(player_id)
+	var daily_double_text = " (Daily Double!)" if current_question.get("daily_double", false) else ""
+	
 	if is_correct:
-		status_label.text = "Correct! " + player_name + " +" + str(points) + " points"
+		status_label.text = "Correct! " + player_name + " +" + str(points) + " points" + daily_double_text
 	else:
-		status_label.text = "Wrong! " + player_name + " -" + str(points) + " points"
+		status_label.text = "Wrong! " + player_name + " -" + str(points) + " points" + daily_double_text
 	
 	# Show the correct answer
 	show_answer()
@@ -208,4 +218,4 @@ func _on_judgment_received(player_id: int, is_correct: bool, points: int):
 func _on_question_completed_sync(category: String, points: int):
 	# All players receive notification that a question has been completed
 	# This will trigger the GameBoardController to update the UI
-	pass  # The actual board update happens in GameBoardController
+	pass # The actual board update happens in GameBoardController

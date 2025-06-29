@@ -6,6 +6,7 @@ class_name MainMenuController
 @onready var host_button = $VBoxContainer/HostButton
 @onready var join_button = $VBoxContainer/JoinButton
 @onready var load_data_button = $VBoxContainer/LoadDataButton
+@onready var host_reference_button = $VBoxContainer/HostReferenceButton
 @onready var ip_input = $VBoxContainer/IPContainer/IPInput
 @onready var status_label = $VBoxContainer/StatusLabel
 @onready var file_dialog = $FileDialog
@@ -18,6 +19,7 @@ func _ready():
 	host_button.pressed.connect(_on_host_pressed)
 	join_button.pressed.connect(_on_join_pressed)
 	load_data_button.pressed.connect(_on_load_data_pressed)
+	host_reference_button.pressed.connect(_on_host_reference_pressed)
 	file_dialog.file_selected.connect(_on_file_selected)
 	
 	# Get references to managers - use call_deferred to ensure Main is ready
@@ -122,6 +124,14 @@ func _transition_to_lobby():
 func _show_error(message: String):
 	status_label.text = message
 	status_label.modulate = Color.RED
+
+func _on_host_reference_pressed():
+	# Open the host reference view in a new window or replace current scene
+	var host_ref_scene = load("res://scenes/ui/HostReference.tscn")
+	if host_ref_scene:
+		get_tree().change_scene_to_packed(host_ref_scene)
+	else:
+		_show_error("Failed to load Host Reference scene")
 
 func _get_local_ip() -> String:
 	# For local testing, always use localhost

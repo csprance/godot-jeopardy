@@ -2,14 +2,26 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch Host Client",
+      "name": "Launch Host Game",
       "type": "godot",
       "request": "launch",
       "project": "${workspaceFolder}",
       "port": 6007,
       "address": "127.0.0.1",
       "launch_game_instance": true,
-      "launch_scene": false
+      "launch_scene": false,
+      "additional_options": "--position 100,100"
+    },
+    {
+      "name": "Launch Host Reference",
+      "type": "godot",
+      "request": "launch",
+      "project": "${workspaceFolder}",
+      "port": 6009,
+      "address": "127.0.0.1",
+      "launch_game_instance": true,
+      "launch_scene": false,
+      "additional_options": "--position 1200,100"
     },
     {
       "name": "Launch Client",
@@ -19,7 +31,8 @@
       "port": 6008,
       "address": "127.0.0.1",
       "launch_game_instance": true,
-      "launch_scene": false
+      "launch_scene": false,
+      "additional_options": "--position 650,500"
     },
     {
       "name": "Attach to Host",
@@ -27,6 +40,13 @@
       "request": "attach",
       "address": "127.0.0.1",
       "port": 6007
+    },
+    {
+      "name": "Attach to Host Reference",
+      "type": "godot",
+      "request": "attach",
+      "address": "127.0.0.1",
+      "port": 6009
     },
     {
       "name": "Attach to Client",
@@ -38,8 +58,13 @@
   ],
   "compounds": [
     {
-      "name": "Launch Two Clients (Host + Client)",
-      "configurations": ["Launch Host Client", "Launch Client"],
+      "name": "Launch Host + Client",
+      "configurations": ["Launch Host Game", "Launch Client"],
+      "stopAll": true
+    },
+    {
+      "name": "Launch All (Host + Host Ref + Client)",
+      "configurations": ["Launch Host Game", "Launch Host Reference", "Launch Client"],
       "stopAll": true
     }
   ]

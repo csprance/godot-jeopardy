@@ -104,7 +104,8 @@ func submit_answer(answer: String, is_correct: bool):
 func update_player_score(player_id: int, points_change: int):
 	if players.has(player_id):
 		players[player_id].score += points_change
-		score_updated.emit(player_id, players[player_id].score)
+		# Use NetworkManager RPC to sync score to all players
+		NetworkManager.rpc("sync_player_score", player_id, players[player_id].score)
 
 func mark_question_completed():
 	current_question["completed"] = true

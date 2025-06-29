@@ -86,6 +86,8 @@ func receive_player_list(player_list: Dictionary):
 
 @rpc("authority", "call_local")
 func start_game():
+	# Sync players to GameState before starting
+	GameState.players = players.duplicate()
 	GameState.change_state(GameState.State.PLAYING)
 	game_started.emit()
 
@@ -139,9 +141,17 @@ func sync_question_completed(category: String, points: int):
 	question_completed.emit(category, points)
 
 @rpc("authority", "call_local")
-func update_score(player_id: int, new_score: int):
+func sync_player_score(player_id: int, new_score: int):
+	# Sync score updates across all players
 	if players.has(player_id):
 		players[player_id].score = new_score
+	
+	# Also update GameState if it has the player
+	if GameState.players.has(player_id):
+		GameState.players[player_id].score = new_score
+	
+	# Emit signal to update UI
+	GameState.score_updated.emit(player_id, new_score)
 
 func get_local_player_id() -> int:
 	return multiplayer.get_unique_id()

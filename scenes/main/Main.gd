@@ -10,6 +10,7 @@ var current_scene: Node
 var main_menu_scene: PackedScene = preload("res://scenes/ui/MainMenu.tscn")
 var lobby_scene: PackedScene = preload("res://scenes/ui/Lobby.tscn")
 var game_board_scene: PackedScene = preload("res://scenes/ui/GameBoard.tscn")
+var host_reference_scene: PackedScene = preload("res://scenes/ui/HostReference.tscn")
 
 # Shared game data
 var game_data: GameData

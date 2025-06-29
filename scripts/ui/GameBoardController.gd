@@ -47,6 +47,9 @@ func _initialize_managers():
 		print("GameBoardController: Found existing board data with ", GameState.game_board.size(), " categories")
 		_on_board_updated(GameState.game_board)
 	
+	# Initialize players from NetworkManager
+	players = NetworkManager.players.duplicate()
+	
 	# Initialize display
 	_update_display()
 	
@@ -156,8 +159,7 @@ func _create_question_button(question_data: Dictionary, category: String) -> Con
 	var points = question_data.get("points", 0)
 	button.text = "$" + str(points)
 	
-	if question_data.get("daily_double", false):
-		button.text += "\n(DD)"
+	# Don't show Daily Double indicator on the board - keep it hidden until selected
 	
 	if question_data.get("completed", false):
 		button.disabled = true

@@ -53,7 +53,7 @@ size_flags_vertical = 0
 
 [node name="GameTitle" type="Label" parent="MainContainer/TopBar"]
 layout_mode = 2
-text = "JEOPARDY!"
+text = "GEOPARDY!"
 label_settings = SubResource("LabelSettings_title")
 
 [node name="Spacer" type="Control" parent="MainContainer/TopBar"]

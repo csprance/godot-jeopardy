@@ -1,6 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4lc5akli03le"]
+[gd_scene load_steps=9 format=3 uid="uid://c4lc5akli03le"]
 
 [ext_resource type="Script" uid="uid://id2n814b0yj3" path="res://scripts/ui/QuestionDisplayController.gd" id="1_question"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nujot"]
+bg_color = Color(0.0470588, 0.0470588, 0.14902, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_category"]
 font_size = 24
@@ -44,6 +47,7 @@ grow_vertical = 2
 [node name="QuestionPanel" type="PanelContainer" parent="CenterContainer"]
 custom_minimum_size = Vector2(800, 600)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nujot")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/QuestionPanel"]
 layout_mode = 2

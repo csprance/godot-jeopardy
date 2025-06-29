@@ -1,0 +1,129 @@
+[gd_scene load_steps=5 format=3 uid="uid://bh4lc5akli04r"]
+
+[ext_resource type="Script" uid="uid://hr2n814b0yj4" path="res://scripts/ui/HostReferenceController.gd" id="1_host_ref"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_title"]
+font_size = 32
+font_color = Color(1, 1, 0.8, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_category"]
+font_size = 18
+font_color = Color(0.9, 0.9, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_question"]
+font_size = 14
+font_color = Color(0.8, 0.8, 0.9, 1)
+
+[node name="HostReference" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_host_ref")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.2, 1)
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Header" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Title" type="Label" parent="MainContainer/Header"]
+layout_mode = 2
+text = "HOST REFERENCE - CONFIDENTIAL"
+label_settings = SubResource("LabelSettings_title")
+
+[node name="Spacer" type="Control" parent="MainContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ConnectionStatus" type="Label" parent="MainContainer/Header"]
+layout_mode = 2
+text = "Not Connected"
+label_settings = SubResource("LabelSettings_category")
+
+[node name="HSeparator" type="HSeparator" parent="MainContainer"]
+layout_mode = 2
+
+[node name="GameStatus" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="PlayersPanel" type="VBoxContainer" parent="MainContainer/GameStatus"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayersTitle" type="Label" parent="MainContainer/GameStatus/PlayersPanel"]
+layout_mode = 2
+text = "Current Players & Scores:"
+label_settings = SubResource("LabelSettings_category")
+
+[node name="PlayersList" type="VBoxContainer" parent="MainContainer/GameStatus/PlayersPanel"]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="MainContainer/GameStatus"]
+layout_mode = 2
+
+[node name="StatusPanel" type="VBoxContainer" parent="MainContainer/GameStatus"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StatusTitle" type="Label" parent="MainContainer/GameStatus/StatusPanel"]
+layout_mode = 2
+text = "Game Status:"
+label_settings = SubResource("LabelSettings_category")
+
+[node name="GameStatusLabel" type="Label" parent="MainContainer/GameStatus/StatusPanel"]
+layout_mode = 2
+text = "Waiting for game..."
+label_settings = SubResource("LabelSettings_question")
+
+[node name="HSeparator3" type="HSeparator" parent="MainContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ReferenceContainer" type="VBoxContainer" parent="MainContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator2" type="HSeparator" parent="MainContainer"]
+layout_mode = 2
+
+[node name="Controls" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="ConnectButton" type="Button" parent="MainContainer/Controls"]
+layout_mode = 2
+text = "Connect as Host Ref"
+
+[node name="Spacer2" type="Control" parent="MainContainer/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CloseButton" type="Button" parent="MainContainer/Controls"]
+layout_mode = 2
+text = "Close"
